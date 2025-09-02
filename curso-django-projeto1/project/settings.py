@@ -1,3 +1,4 @@
+from django.contrib.messages import constants
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -16,6 +17,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True if os.environ.get('DEBUG') == 1 else False
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -26,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipes',
+    'authors',
 ]
 
 MIDDLEWARE = [
@@ -100,8 +108,6 @@ TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
 
@@ -123,3 +129,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_TAGS = {
+    constants.INFO: 'message-info',
+    constants.DEBUG: 'message-debug',
+    constants.ERROR: 'message-error',
+    constants.SUCCESS: 'message-success',
+    constants.WARNING: 'message-warning',
+}
